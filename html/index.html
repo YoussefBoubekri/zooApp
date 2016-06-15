@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="animalsModule">
+
+<head>
+    <title>AngularJs App</title>
+    <meta charset="UTF-8">
+    <link href="../libs/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>{{appSettings.appTitle}}</h1>
+    <footer>{{appSettings.appVersion}}</footer>
+
+    <div id="fade" class="green_overlay"></div>
+    <div class="container">
+
+        <div ng-view>
+
+        </div>
+    </div>
+    <script src="../libs/jquery/jquery.min.js"></script>
+    <script src="../libs/bootstrap/js/bootstrap.js"></script>
+    <script src="../libs/angular/angular.js"></script>
+    <script src="../libs/angular/angular-route.js"></script>
+    <script src="../js/App/App.js"></script>
+    <script src="../js/App/Animals/animalsController.js"></script>
+    <script src="../js/App/Animals/detailsController.js"></script>
+    <script src="../js/App/Animals/animalsService.js"></script>
+    <script src="../js/App/Animals/animalsFactory.js"></script>
+    <script src="../js/App/value.js"></script>
+    <script>
+        $(function () {
+            $('body').on('click', '.toggler', function () {
+                $('.green_overlay').css('display', 'block');
+                $('.options').css('display', 'block');
+            });
+            $('.green_overlay').click(function () {
+                $('.green_overlay').css('display', 'none');
+                $('.options').css('display', 'none');
+            });
+            $(document).keyup(function (e) {
+                if (e.keyCode == 27) {
+                    $('.green_overlay').css('display', 'none');
+                    $('.options').css('display', 'none');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

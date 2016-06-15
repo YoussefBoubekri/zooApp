@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading text-center"><span class="label label-success">{{animal.name}}</span></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-{{classe}}" ng-repeat="img in animal.images">
+                        <img class="img-responsive img-rounded" src="http://zoo.cyrilmoral.es/api/v1/images/{{img}}/256" alt="{{animal.name}}">
+                    </div>
+                </div>
+                <div>
+                    <p></p>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p class="blockquote">{{animal.description}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer panel-success text-center">
+                <span class="label label-success">{{animal.zones}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel">
+            <div class="panel-heading text-center"><span class="text-info glyphicon glyphicon-info-sign"></span></div>
+            <div class="panel-body">
+                <div class="row">
+                    <table class="table table-compact">
+                        <tr>
+                            <th>Classe</th>
+                            <th>Famille</th>
+                            <th>Ordre</th>
+                            <th>Poids</th>
+                            <th>Duree de vie</th>
+
+                        </tr>
+                        <tr>
+                            <td>{{animal.class}}</td>
+                            <td>{{animal.family}}</td>
+                            <td>{{animal.order}} </td>
+                            <td>{{animal.weight}}</td>
+                            <td>{{animal.lifetime}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <a href="#/animals/">retour a la Liste of animals</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        {{inTheSameCategory.length}} animaux de categorie <span class="label label-success">{{categories}}</span>:
+    </div>
+</div>
+<p></p>
+<div class="col-md-2" ng-repeat="an in inTheSameCategory track by $index">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="#/animals/{{an.id}}">
+                <img class="img-thumbnail" src="http://zoo.cyrilmoral.es/api/v1/images/{{an.images[0]}}/256" alt="{{an.name}}" title="{{an.name}} - Click for details" width="100" height="100">
+            </a>
+        </div>
+        <div class="col-md-12 text-center"> {{an.name}}</div>
+    </div>
+</div>

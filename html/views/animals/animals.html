@@ -1,0 +1,42 @@
+<div class="row">
+    <a href="javascript:void(0);" class="toggler">Search options</a>
+</div>
+<div class="options">
+    <div class="row">
+        <div class="col-md-6">
+            <p class="text-success"><u>Sort by:</u></p>
+            <ul>
+                <li><a href="javascript:void(0);" ng-click="sort('name')">Name</a></li>
+                <li><a href="javascript:void(0);" ng-click="sort('order')">Order's name</a></li>
+                <li><a href="javascript:void(0);" ng-click="sort('family')">Family's name</a></li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <p class="text-success"><u>Filter by:</u></p>
+            <div class="form-group">
+                <input type="text" class="form-control input-sm" id="name" placeholder="Animal's name" ng-model="nameFilter">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control input-sm" id="familyname" placeholder="Family's name" ng-model="familyFilter">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control input-sm" id="ordername" placeholder="Order's name" ng-model="orderFilter">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4" ng-repeat="animal in animals | filter: nameFilter | filter: familyFilter | filter: orderFilter | orderBy:sortBy:reverse">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a href="#/animals/{{animal.id}}">
+                    <img class="img-thumbnail" src="http://zoo.cyrilmoral.es/api/v1/images/{{animal.images[0]}}/256" alt="{{animal.name}}" title="{{animal.name}} - Click for details" width="100" height="100">
+                </a>
+            </div>
+            <div class="col-md-12 text-center"> {{animal.name}}
+            </div>
+
+        </div>
+        <p></p>
+    </div>
+</div>
