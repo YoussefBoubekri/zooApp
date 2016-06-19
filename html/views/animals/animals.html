@@ -26,11 +26,11 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4" ng-repeat="animal in animals | filter: nameFilter | filter: familyFilter | filter: orderFilter | orderBy:sortBy:reverse">
+    <div class="col-md-4" ng-repeat="animal in pagedAnimals | filter: nameFilter | filter: familyFilter | filter: orderFilter | orderBy:sortBy:reverse">
         <div class="row">
             <div class="col-md-12 text-center">
                 <a href="#/animals/{{animal.id}}">
-                    <img class="img-thumbnail" src="http://zoo.cyrilmoral.es/api/v1/images/{{animal.images[0]}}/256" alt="{{animal.name}}" title="{{animal.name}} - Click for details" width="100" height="100">
+                    <img class="img-thumbnail" ng-src="http://zoo.cyrilmoral.es/api/v1/images/{{animal.images[0]}}/256" alt="{{animal.name}}" title="{{animal.name}} - Click for details" width="100" height="100">
                 </a>
             </div>
             <div class="col-md-12 text-center"> {{animal.name}}
@@ -39,4 +39,23 @@
         </div>
         <p></p>
     </div>
+</div>
+<div class="row">
+    <ul class="pagination">
+        <li ng-class="{disabled:currentPage === 1}">
+            <a ng-click="setPage(1)">First</a>
+        </li>
+        <li ng-class="{disabled:currentPage === 1}">
+            <a ng-click="setPage(currentPage - 1)">Previous</a>
+        </li>
+        <li ng-repeat="page in pages" ng-class="{active:currentPage === page}">
+            <a ng-click="setPage(page)">{{page}}</a>
+        </li>
+        <li ng-class="{disabled:currentPage === totalPages}">
+            <a ng-click="setPage(currentPage + 1)">Next</a>
+        </li>
+        <li  ng-class="{disabled:currentPage === totalPages}">
+            <a ng-click="setPage(totalPages)">Last</a>
+        </li>
+    </ul>
 </div>
