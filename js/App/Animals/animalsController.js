@@ -16,15 +16,14 @@
                     //handle error
                 });
         };
+
+        
         $scope.setPage = function (page) {
-            pagerService.GetPage($scope.animals.length, page, 10);
-            
+            pagerService.GetPage($scope.animals.length, page, 12);
             $scope.pagedAnimals = $scope.animals.slice(pagerService.startIndex, pagerService.endIndex);
             $scope.currentPage = pagerService.currentPage;
             $scope.pages = pagerService.pages;
             $scope.totalPages = pagerService.totalPages;
-            
-            
         }
         $scope.sort = function (propName) {
             $scope.sortBy = propName;

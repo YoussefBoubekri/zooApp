@@ -13,12 +13,13 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <p class="blockquote">{{animal.description}}</p>
+                        <p class="blockquote">{{animal.description | htmlTagsFilter | htmlEntitiesDecoder}}</p>
                     </div>
                 </div>
             </div>
             <div class="panel-footer panel-success text-center">
-                <span class="label label-success">{{animal.zones}}</span><span class="label label-success">{{categories}}</span>
+                <span class="label label-success">{{animal.zones}}</span>
+                <span class="label label-success">{{categories}}</span>
             </div>
         </div>
     </div>
@@ -45,53 +46,51 @@
                         </tr>
                         <tr>
                             <td colspan="5">
-                                <a href="#/animals/">retour a la Liste of animals</a>
+                                <a href="#/animals/">retour a la Liste</a>
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-
+                        <p><strong>dans la meme categorie:</strong></p>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row contenuList">
+                            <div class="col-md-6" ng-repeat="an in pagedAnimals track by $index">
+                                <div class="col-md-6 text-center">
+                                    <a href="#/animals/{{an.id}}">
+                                        <img class="img-thumbnail animalImg" src="http://zoo.cyrilmoral.es/api/v1/images/{{an.images[0]}}/256" alt="{{an.name}}" title="{{an.name}} - Click for details" width="100" height="100">
+                                    </a>
+                                </div>
+                                <div class="col-md-12 text-left"><small>{{an.name}}</small></div>
 
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <ul class="pagination">
+                                <li ng-class="{disabled:currentPage === 1}">
+                                    <a href="javascript:void(0);" ng-click="setPage(1)">First</a>
+                                </li>
+                                <li ng-class="{disabled:currentPage === 1}">
+                                    <a href="javascript:void(0);" ng-click="setPage(currentPage - 1)">Previous</a>
+                                </li>
+                                <li ng-repeat="page in pages" ng-class="{active:currentPage === page}">
+                                    <a href="javascript:void(0);" ng-click="setPage(page)">{{page}}</a>
+                                </li>
+                                <li ng-class="{disabled:currentPage === totalPages}">
+                                    <a href="javascript:void(0);" ng-click="setPage(currentPage + 1)">Next</a>
+                                </li>
+                                <li ng-class="{disabled:currentPage === totalPages}">
+                                    <a href="javascript:void(0);" ng-click="setPage(totalPages)">Last</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        dans la meme categorie:
-    </div>
-</div>
-<p></p>
-<div class="row">
-    <div class="col-md-4" ng-repeat="an in pagedAnimals track by $index">
-        <div class="col-md-12 text-center">
-            <a href="#/animals/{{an.id}}">
-                <img class="img-thumbnail" ng-src="http://zoo.cyrilmoral.es/api/v1/images/{{an.images[0]}}/256" alt="{{an.name}}" title="{{an.name}} - Click for details" width="100" height="100">
-            </a>
-        </div>
-        <div class="col-md-12 text-center"> {{an.name}}</div>
-    </div>
-</div>
-<div class="row">
-    <ul class="pagination">
-        <li ng-class="{disabled:currentPage === 1}">
-            <a ng-click="setPage(1)">First</a>
-        </li>
-        <li ng-class="{disabled:currentPage === 1}">
-            <a ng-click="setPage(currentPage - 1)">Previous</a>
-        </li>
-        <li ng-repeat="page in pages" ng-class="{active:currentPage === page}">
-            <a ng-click="setPage(page)">{{page}}</a>
-        </li>
-        <li ng-class="{disabled:currentPage === totalPages}">
-            <a ng-click="setPage(currentPage + 1)">Next</a>
-        </li>
-        <li  ng-class="{disabled:currentPage === totalPages}">
-            <a ng-click="setPage(totalPages)">Last</a>
-        </li>
-    </ul>
 </div>

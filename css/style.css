@@ -2,6 +2,15 @@
     display:none !important;
 }
 
+.contenu{
+    min-height: 400px;
+
+}
+.contenuList{
+    
+       min-height: 30px;
+ 
+}
 .green_overlay{
 	display: none;
 	position: absolute;
@@ -15,7 +24,16 @@
 	opacity:.80;
 	filter: alpha(opacity=80);
 }
-
+.centerText{       -webkit-box-align : center;
+  -webkit-align-items : center;
+       -moz-box-align : center;
+       -ms-flex-align : center;
+          align-items : center;
+}
+.animalImg{
+   width:100px;
+   height:100px;
+}
 .options {
 	display: none;
 	position: absolute;
