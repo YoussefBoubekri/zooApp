@@ -1,6 +1,6 @@
 (function () {
 
-    var animalsModule = angular.module('animalsModule', ['ngRoute']);
+    var animalsModule = angular.module('animalsModule', ['ngRoute','ngAnimate']);
     animalsModule.config(function ($routeProvider) {
         $routeProvider
             .when('/', {

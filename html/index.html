@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <link href="../libs/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/animation.css" rel="stylesheet">
 </head>
 
 <body>
@@ -14,13 +15,14 @@
 
     <div id="fade" class="green_overlay"></div>
     <div class="container">
-        <div ng-view>
+        <div ng-view class="slide-animation">
 
         </div>
     </div>
     <script src="../libs/jquery/jquery.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.js"></script>
     <script src="../libs/angular/angular.js"></script>
+    <script src="../libs/angular/angular-animate.js"></script>
     <script src="../libs/angular/angular-route.js"></script>
     <script src="../js/App/App.js"></script>
     <script src="../js/App/Animals/animalsController.js"></script>
